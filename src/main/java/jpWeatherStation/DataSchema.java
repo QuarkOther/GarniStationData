@@ -1,4 +1,4 @@
-package JPtesting;
+package jpWeatherStation;
 
 import java.time.LocalDateTime;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package JPtesting;
+package jpWeatherStation;
 
 public class DatabaseConnection {
 }
