@@ -1,6 +1,7 @@
 package jpWeatherStation;
 
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.Map;
 
 public class DataSchema {
@@ -40,7 +41,8 @@ public class DataSchema {
         this.uvIndex = String.valueOf(Double.parseDouble(data.get("uvIndex")));
     }
 
-    public Map<String, String> getData(Map<String, String> data){
+    public Map<String, String> getDataAsMap(){
+        Map<String, String> data = new HashMap<>();
         data.put("weatherStationID", this.weatherStationID);
         data.put("password", this.password);
         data.put("action", this.action);
