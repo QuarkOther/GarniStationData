@@ -1,9 +1,13 @@
 package jpWeatherStation;
 
+import java.io.IOException;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
-        DataSchema dataSchema = new DataSchema();
-        System.out.println(dataSchema.getDataAsMap());
+        try {
+            new SilentHttpServerDataGetter();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

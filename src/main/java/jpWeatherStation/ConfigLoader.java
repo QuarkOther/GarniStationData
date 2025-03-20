@@ -2,7 +2,6 @@ package jpWeatherStation;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.Properties;
 
 public class ConfigLoader {
@@ -38,7 +37,10 @@ public class ConfigLoader {
     }
 
 
-    public static int getPort() {
-        return Integer.parseInt(properties.getProperty("INPUT_PORT"));
+    public static String getPort() {
+        if (properties.getProperty("INPUT_PORT") != null) {
+            return properties.getProperty("INPUT_PORT");
+        }
+        else return null;
     }
 }

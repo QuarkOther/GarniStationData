@@ -10,6 +10,6 @@ public class ConfigLoaderTest {
         ConfigLoader conf = new ConfigLoader();
         conf.loadConfig();
         assertEquals("10.10.8.33", conf.getIp());
-        assertEquals(80, conf.getPort());
+        assertEquals("80", conf.getPort());
     }
 }
