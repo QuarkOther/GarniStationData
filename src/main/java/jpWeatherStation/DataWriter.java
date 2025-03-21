@@ -49,5 +49,4 @@ public class DataWriter {
             return false;
         }
     }
-
 }

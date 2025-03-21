@@ -30,13 +30,11 @@ public class SilentHttpServerDataGetter {
             System.out.println("Received request: " + exchange.getRequestMethod() + " " + exchange.getRequestURI());
 
             Headers headers = exchange.getRequestHeaders();
-            //System.out.println("Headers:");
             for (Map.Entry<String, List<String>> entry : headers.entrySet()) {
                 System.out.println(entry.getKey() + ": " + entry.getValue());
             }
 
             String receivedMsg = exchange.getRequestURI().toString();
-            //System.out.println("Request Body:\n" + receivedMsg);
             DataProcessing dataProcess = new DataProcessing(receivedMsg);
             Map<String, String> writeToDbData = (Map<String, String>) dataProcess.getProcessedData();
             System.out.println("Data to write to DB\n" + writeToDbData);
