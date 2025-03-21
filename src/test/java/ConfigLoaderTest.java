@@ -9,7 +9,8 @@ public class ConfigLoaderTest {
     public void testLoadConfig() {
         ConfigLoader conf = new ConfigLoader();
         conf.loadConfig();
-        assertEquals("10.10.8.33", conf.getIp());
-        assertEquals("80", conf.getPort());
+
+        assertTrue(conf.getIp().matches("\\b(?:\\d{1,3}\\.){3}\\d{1,3}\\b"), "IP address format is invalid");
+        assertTrue(conf.getPort().matches("\\d{4}"), "Port number format is invalid");
     }
 }

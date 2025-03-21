@@ -1,6 +1,7 @@
 package jpWeatherStation;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,28 +18,34 @@ public class DataSchema {
     private String indoorHumidity;
     private String outdoorHumidity;
     private String windSpeed;
+    private String windGust;
     private String windDirection;
     private String rainRate;
     private String sunRadiation;
     private String uvIndex;
 
     public void setData(Map<String, String> data){
-        this.weatherStationID = data.get("weatherStationID");
-        this.password = data.get("password");
+        this.weatherStationID = data.get("ID");
+        this.password = data.get("PASSWORD");
         this.action = data.get("action");
         this.realTime = data.get("realTime");
-        this.rateFrequency = String.valueOf(Integer.parseInt(data.get("rateFrequency")));
-        this.dateTime = String.valueOf(LocalDateTime.parse(data.get("dateTime")));
-        this.barometricPressure = String.valueOf(Double.parseDouble(data.get("barometricPressure")));
-        this.indoorTempC = String.valueOf((Double.parseDouble(data.get("indoorTemp")) - 32) * 5 / 9);
-        this.outdoorTempC = String.valueOf((Double.parseDouble(data.get("outdoorTemp")) - 32) * 5 / 9);
-        this.indoorHumidity = String.valueOf(Double.parseDouble(data.get("indoorHumidity")));
-        this.outdoorHumidity = String.valueOf(Double.parseDouble(data.get("outdoorHumidity")));
-        this.windSpeed = String.valueOf(Double.parseDouble(data.get("windSpeed")));
-        this.windDirection = String.valueOf(Integer.parseInt(data.get("windDirection")));
-        this.rainRate = String.valueOf(Double.parseDouble(data.get("rainRate")));
-        this.sunRadiation = String.valueOf(Double.parseDouble(data.get("sunRadiation")));
-        this.uvIndex = String.valueOf(Double.parseDouble(data.get("uvIndex")));
+        this.rateFrequency = String.valueOf(Integer.parseInt(data.get("rtfreq")));
+        if ("now".equals(data.get("dateutc"))) {
+            this.dateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        } else {
+            this.dateTime = String.valueOf(LocalDateTime.parse(data.get("dateutc")));
+        }
+        this.barometricPressure = String.valueOf(Double.parseDouble(data.get("baromin")));
+        this.indoorTempC = String.valueOf((Double.parseDouble(data.get("indoortempf")) - 32) * 5 / 9);
+        this.outdoorTempC = String.valueOf((Double.parseDouble(data.get("tempf")) - 32) * 5 / 9);
+        this.indoorHumidity = String.valueOf(Double.parseDouble(data.get("indoorhumidity")));
+        this.outdoorHumidity = String.valueOf(Double.parseDouble(data.get("humidity")));
+        this.windSpeed = String.valueOf(Double.parseDouble(data.get("windspeedmph")));
+        this.windGust = String.valueOf(Double.parseDouble(data.get("windgustmph")));
+        this.windDirection = String.valueOf(Integer.parseInt(data.get("winddir")));
+        this.rainRate = String.valueOf(Double.parseDouble(data.get("rainin")));
+        this.sunRadiation = String.valueOf(Double.parseDouble(data.get("solarradiation")));
+        this.uvIndex = String.valueOf(Double.parseDouble(data.get("UV")));
     }
 
     public Map<String, String> getDataAsMap(){
@@ -56,6 +63,7 @@ public class DataSchema {
         data.put("outdoorHumidity", this.outdoorHumidity);
         data.put("windSpeed", this.windSpeed);
         data.put("windDirection", this.windDirection);
+        data.put("windGust", this.windGust);
         data.put("rainRate", this.rainRate);
         data.put("sunRadiation", this.sunRadiation);
         data.put("uvIndex", this.uvIndex);

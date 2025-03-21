@@ -4,9 +4,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DataProcessing {
+    private DataSchema dataSchema;
 
     public DataProcessing(String rawDataString) {
-        DataSchema dataSchema = parseAndSetData(rawDataString);
+        this.dataSchema = parseAndSetData(rawDataString);
+    }
+
+    public Object getProcessedData() {
+        return this.dataSchema.getDataAsMap();
     }
 
     private DataSchema parseAndSetData(String rawDataString) {

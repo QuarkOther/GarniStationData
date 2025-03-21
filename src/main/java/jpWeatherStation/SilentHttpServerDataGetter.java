@@ -3,6 +3,8 @@ package jpWeatherStation;
 import com.sun.net.httpserver.*;
 import java.io.*;
 import java.net.*;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
@@ -19,7 +21,7 @@ public class SilentHttpServerDataGetter {
 
         server.setExecutor(null);
         server.start();
-        System.out.println("HTTP Server started on port " + port);
+        System.out.println("HTTP Server started on: " + ip + ":" + port);
     }
 
     static class SilentHandler implements HttpHandler {
@@ -27,18 +29,21 @@ public class SilentHttpServerDataGetter {
         public void handle(HttpExchange exchange) throws IOException {
             System.out.println("Received request: " + exchange.getRequestMethod() + " " + exchange.getRequestURI());
 
-            // Print request headers
             Headers headers = exchange.getRequestHeaders();
-            System.out.println("Headers:");
+            //System.out.println("Headers:");
             for (Map.Entry<String, List<String>> entry : headers.entrySet()) {
                 System.out.println(entry.getKey() + ": " + entry.getValue());
             }
 
-            InputStream inputStream = exchange.getRequestBody();
-            String requestBody = new String(inputStream.readAllBytes());
-            System.out.println("Request Body:\n" + exchange.getRequestURI());
+            String receivedMsg = exchange.getRequestURI().toString();
+            //System.out.println("Request Body:\n" + receivedMsg);
+            DataProcessing dataProcess = new DataProcessing(receivedMsg);
+            Map<String, String> writeToDbData = (Map<String, String>) dataProcess.getProcessedData();
+            System.out.println("Data to write to DB\n" + writeToDbData);
 
-            exchange.close(); // Simply close the connection without responding
+            new DataWriteDbHandler(writeToDbData);
+
+            exchange.close();
         }
     }
 }
