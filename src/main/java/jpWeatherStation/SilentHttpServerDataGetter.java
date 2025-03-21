@@ -16,6 +16,7 @@ public class SilentHttpServerDataGetter {
         int port = Integer.parseInt(conf.getPort());
         String ip = conf.getIp();
 
+        assert ip != null;
         HttpServer server = HttpServer.create(new InetSocketAddress(ip,port), 0);
         server.createContext("/", new SilentHandler());
 

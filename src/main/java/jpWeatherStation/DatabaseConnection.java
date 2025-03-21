@@ -28,7 +28,7 @@ public class DatabaseConnection {
             System.out.println("MySQL JDBC Driver not found.");
             e.printStackTrace();
         }
-        this.URL = "jdbc:mysql://10.10.8.23:3306/weather_data";
+        this.URL = "jdbc:mysql://localhost:3306/weather_data";
         this.USER = "admin";
         this.PASSWORD = "mysql";
     }
