@@ -28,7 +28,7 @@ public class DataSchema {
         this.weatherStationID = data.get("ID");
         this.password = data.get("PASSWORD");
         this.action = data.get("action");
-        this.realTime = data.get("realTime");
+        this.realTime = data.get("realtime");
         this.rateFrequency = String.valueOf(Integer.parseInt(data.get("rtfreq")));
         if ("now".equals(data.get("dateutc"))) {
             this.dateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));

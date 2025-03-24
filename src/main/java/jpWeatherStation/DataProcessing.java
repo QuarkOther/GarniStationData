@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DataProcessing {
-    private DataSchema dataSchema;
+    private final DataSchema dataSchema;
 
     public DataProcessing(String rawDataString) {
         this.dataSchema = parseAndSetData(rawDataString);
