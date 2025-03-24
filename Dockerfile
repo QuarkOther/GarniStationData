@@ -10,8 +10,8 @@ EXPOSE 8080
 COPY build/libs/GarniStationData-1.0.jar /app/app.jar
 COPY conf/config.properties /conf/config.properties
 
-RUN curl -o /app/mysql-connector-java-8.0.33.jar https://repo1.maven.org/maven2/mysql/mysql-connector-java/8.0.33/mysql-connector-java-8.0.33.jar
+RUN curl -o /app/mysql-connector-java.jar https://repo1.maven.org/maven2/mysql/mysql-connector-java/8.0.26/mysql-connector-java-8.0.26.jar
 
-RUN ls -l /app/mysql-connector-java-8.0.33.jar
+RUN ls -l /app/mysql-connector-java.jar
 
-ENTRYPOINT ["java", "-cp", "/app/app.jar:/app/mysql-connector-java-8.0.33.jar", "jpWeatherStation.Main"]
+ENTRYPOINT ["java", "-cp", "/app/app.jar:/app/mysql-connector-java.jar", "jpWeatherStation.Main"]

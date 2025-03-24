@@ -78,4 +78,13 @@ public class ConfigLoader {
         }
         else return null;
     }
+
+    public static String getTimeZone() {
+        if (properties.getProperty("TIMEZONE") != null) {
+            return properties.getProperty("TIMEZONE");
+        }
+        else {
+            return "UTC";
+        }
+    }
 }
