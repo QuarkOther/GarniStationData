@@ -43,4 +43,39 @@ public class ConfigLoader {
         }
         else return null;
     }
+
+    public static String getDbIP() {
+        if (properties.getProperty("DB_IP") != null) {
+            return properties.getProperty("DB_IP");
+        }
+        else return null;
+    }
+
+    public static String getDbPort() {
+        if (properties.getProperty("DB_PORT") != null) {
+            return properties.getProperty("DB_PORT");
+        }
+        else return null;
+    }
+
+    public static String getDbUser() {
+        if (properties.getProperty("DB_USER") != null) {
+            return properties.getProperty("DB_USER");
+        }
+        else return null;
+    }
+
+    public static String getDbPassword() {
+        if (properties.getProperty("DB_PASSWORD") != null) {
+            return properties.getProperty("DB_PASSWORD");
+        }
+        else return null;
+    }
+
+    public static String getDbDatabase() {
+        if (properties.getProperty("DB_DATABASE_NAME") != null) {
+            return properties.getProperty("DB_DATABASE_NAME");
+        }
+        else return null;
+    }
 }
