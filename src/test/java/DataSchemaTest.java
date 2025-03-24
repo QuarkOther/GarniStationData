@@ -15,7 +15,7 @@ public class DataSchemaTest {
         data.put("ID", "WS123");
         data.put("PASSWORD", "pass123");
         data.put("action", "update");
-        data.put("realTime", "true");
+        data.put("realtime", "1");
         data.put("rtfreq", "5");
         data.put("dateutc", "now");
         data.put("baromin", "29.92");
@@ -35,7 +35,7 @@ public class DataSchemaTest {
         assertEquals("WS123", dataSchema.getDataAsMap().get("weatherStationID"));
         assertEquals("pass123", dataSchema.getDataAsMap().get("password"));
         assertEquals("update", dataSchema.getDataAsMap().get("action"));
-        assertEquals("true", dataSchema.getDataAsMap().get("realTime"));
+        assertEquals("1", dataSchema.getDataAsMap().get("realTime"));
         assertEquals("5", dataSchema.getDataAsMap().get("rateFrequency"));
         assertNotNull(dataSchema.getDataAsMap().get("dateTime"));
         assertEquals("29.92", dataSchema.getDataAsMap().get("barometricPressure"));
