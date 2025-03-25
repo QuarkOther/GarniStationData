@@ -38,12 +38,12 @@ public class DataSchemaTest {
         assertEquals("1", dataSchema.getDataAsMap().get("realTime"));
         assertEquals("5", dataSchema.getDataAsMap().get("rateFrequency"));
         assertNotNull(dataSchema.getDataAsMap().get("dateTime"));
-        assertEquals("29.92", dataSchema.getDataAsMap().get("barometricPressure"));
+        assertEquals("1013.2069082289197", dataSchema.getDataAsMap().get("barometricPressure"));
         assertEquals("20.0", dataSchema.getDataAsMap().get("indoorTempC"));
         assertEquals("21.11111111111111", dataSchema.getDataAsMap().get("outdoorTempC"));
         assertEquals("40.0", dataSchema.getDataAsMap().get("indoorHumidity"));
         assertEquals("50.0", dataSchema.getDataAsMap().get("outdoorHumidity"));
-        assertEquals("10.0", dataSchema.getDataAsMap().get("windSpeed"));
+        assertEquals("4.4704", dataSchema.getDataAsMap().get("windSpeed"));
         assertEquals("15.0", dataSchema.getDataAsMap().get("windGust"));
         assertEquals("180", dataSchema.getDataAsMap().get("windDirection"));
         assertEquals("0.1", dataSchema.getDataAsMap().get("rainRate"));

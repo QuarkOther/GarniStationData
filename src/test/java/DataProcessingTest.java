@@ -19,12 +19,12 @@ public class DataProcessingTest {
         data.put("realTime", "1");
         data.put("rateFrequency", "5");
         data.put("dateTime", LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
-        data.put("barometricPressure", "29.81");
+        data.put("barometricPressure", "1009.4818828310192");
         data.put("indoorTempC", "23.055555555555557");
         data.put("outdoorTempC", "8.88888888888889");
         data.put("indoorHumidity", "50.0");
         data.put("outdoorHumidity", "97.0");
-        data.put("windSpeed", "1.5");
+        data.put("windSpeed", "0.67056");
         data.put("windDirection", "324");
         data.put("windGust", "1.5");
         data.put("rainRate", "0.0");
