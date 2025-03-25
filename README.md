@@ -58,3 +58,6 @@ Don't forget to save it after you are done, otherwise you will lose the changes 
 The mapping in `DataSchema.java` so as `DataWriter.java` file could be specific for your garni station, so you might need to change it.
 I recommend check the incoming data from station and change the mapping in the DataSchema file if needed.
 If you change it, don't forget to update tests.
+
+TODO:
+- [ ] Add data backup from mysql
