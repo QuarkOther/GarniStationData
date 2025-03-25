@@ -1,6 +1,7 @@
 package jpWeatherStation;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
@@ -28,19 +29,19 @@ public class DataSchema {
         this.weatherStationID = data.get("ID");
         this.password = data.get("PASSWORD");
         this.action = data.get("action");
-        this.realTime = data.get("realTime");
+        this.realTime = data.get("realtime");
         this.rateFrequency = String.valueOf(Integer.parseInt(data.get("rtfreq")));
         if ("now".equals(data.get("dateutc"))) {
-            this.dateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+            this.dateTime = LocalDateTime.now(ZoneId.of(ConfigLoader.getTimeZone())).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         } else {
             this.dateTime = String.valueOf(LocalDateTime.parse(data.get("dateutc")));
         }
-        this.barometricPressure = String.valueOf(Double.parseDouble(data.get("baromin")));
+        this.barometricPressure = String.valueOf(Double.parseDouble(data.get("baromin"))/29.5300*1000);
         this.indoorTempC = String.valueOf((Double.parseDouble(data.get("indoortempf")) - 32) * 5 / 9);
         this.outdoorTempC = String.valueOf((Double.parseDouble(data.get("tempf")) - 32) * 5 / 9);
         this.indoorHumidity = String.valueOf(Double.parseDouble(data.get("indoorhumidity")));
         this.outdoorHumidity = String.valueOf(Double.parseDouble(data.get("humidity")));
-        this.windSpeed = String.valueOf(Double.parseDouble(data.get("windspeedmph")));
+        this.windSpeed = String.valueOf(Double.parseDouble(data.get("windspeedmph"))* 0.44704);
         this.windGust = String.valueOf(Double.parseDouble(data.get("windgustmph")));
         this.windDirection = String.valueOf(Integer.parseInt(data.get("winddir")));
         this.rainRate = String.valueOf(Double.parseDouble(data.get("rainin")));

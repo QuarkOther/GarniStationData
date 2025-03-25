@@ -2,42 +2,36 @@ services:
   mysql:
     image: mysql:5.7
     container_name: mysql-container
+    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: mysql
       MYSQL_DATABASE: weather_data
       MYSQL_USER: admin
       MYSQL_PASSWORD: mysql
+      TZ: "Europe/Prague"
     ports:
       - "3306:3306"
       - "33060:33060"
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
     volumes:
       - ./mysql_data:/var/lib/mysql
 
   grafana:
     image: grafana/grafana-oss:latest
+    restart: always
     container_name: grafana-container
     ports:
       - "3000:3000"
-    volumes:
-      - ./grafana:/var/lib/grafana
-      - ./grafana/provisioning:/etc/grafana/provisioning
 
   app:
     build:
       dockerfile: Dockerfile
     container_name: garni_station_data-container
+    restart: always
+    network_mode: host
     ports:
-      - "80:80"
       - "8080:8080"
     depends_on:
       - mysql
       - grafana
     volumes:
       - ./src:/app/src
-
-networks:
-  default:
-    external: true
-    name: garni_station_data_network

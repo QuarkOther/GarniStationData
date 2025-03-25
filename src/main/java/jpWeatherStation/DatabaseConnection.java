@@ -9,18 +9,6 @@ public class DatabaseConnection {
     private final String USER;
     private final String PASSWORD;
 
-    DatabaseConnection(String url, String user, String password) {
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            System.out.println("MySQL JDBC Driver not found.");
-            e.printStackTrace();
-        }
-        this.URL = url;
-        this.USER = user;
-        this.PASSWORD = password;
-    }
-
     DatabaseConnection() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -28,15 +16,18 @@ public class DatabaseConnection {
             System.out.println("MySQL JDBC Driver not found.");
             e.printStackTrace();
         }
-        this.URL = "jdbc:mysql://10.10.8.23:3306/weather_data";
-        this.USER = "admin";
-        this.PASSWORD = "mysql";
+        ConfigLoader conf = new ConfigLoader();
+        conf.loadConfig();
+        this.URL = "jdbc:mysql://" + conf.getDbIP() + ":" + conf.getDbPort() + "/" + conf.getDbDatabase();
+        this.USER = conf.getDbUser();
+        this.PASSWORD = conf.getDbPassword();
     }
 
 
     public Connection connect() {
         Connection connection = null;
         try {
+            System.out.println("Connecting to MySQL database..."+this.URL);
             connection = DriverManager.getConnection(this.URL, this.USER, this.PASSWORD);
             System.out.println("Connection to MySQL database established successfully.");
         } catch (SQLException e) {
