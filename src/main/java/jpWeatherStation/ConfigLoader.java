@@ -16,10 +16,7 @@ public class ConfigLoader {
     public void loadConfig() {
         try {
             FileInputStream input = new FileInputStream(this.configFile);
-            if (input == null) {
-                System.out.printf("Sorry, unable to find %s%n", this.configFile);
-            }
-            else properties.load(input);
+            properties.load(input);
         } catch (IOException ex) {
             ex.printStackTrace();
         }

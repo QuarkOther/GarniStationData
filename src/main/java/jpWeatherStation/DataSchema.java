@@ -36,12 +36,12 @@ public class DataSchema {
         } else {
             this.dateTime = String.valueOf(LocalDateTime.parse(data.get("dateutc")));
         }
-        this.barometricPressure = String.valueOf(Double.parseDouble(data.get("baromin")));
+        this.barometricPressure = String.valueOf(Double.parseDouble(data.get("baromin"))/29.5300*1000);
         this.indoorTempC = String.valueOf((Double.parseDouble(data.get("indoortempf")) - 32) * 5 / 9);
         this.outdoorTempC = String.valueOf((Double.parseDouble(data.get("tempf")) - 32) * 5 / 9);
         this.indoorHumidity = String.valueOf(Double.parseDouble(data.get("indoorhumidity")));
         this.outdoorHumidity = String.valueOf(Double.parseDouble(data.get("humidity")));
-        this.windSpeed = String.valueOf(Double.parseDouble(data.get("windspeedmph")));
+        this.windSpeed = String.valueOf(Double.parseDouble(data.get("windspeedmph"))* 0.44704);
         this.windGust = String.valueOf(Double.parseDouble(data.get("windgustmph")));
         this.windDirection = String.valueOf(Integer.parseInt(data.get("winddir")));
         this.rainRate = String.valueOf(Double.parseDouble(data.get("rainin")));

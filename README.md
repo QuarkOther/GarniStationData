@@ -31,7 +31,7 @@ If you are running it locally, you can use the default values, but it is recomme
 You can run the project by running the following commands in the root directory of the project, first you need to build the project:
 
 ```bash
-./gradlew build
+./gradlew clean build test
 ```
 
 and then you can run the project by running the following command:
@@ -53,3 +53,8 @@ Then you can import the dashboard from the file `WeatherData-Grafana_import.json
 Then just edit the view and press run query, if you have correctly set up the mysql input, you should see the data.
 
 Don't forget to save it after you are done, otherwise you will lose the changes after the restart of the grafana.
+
+### Additional information
+The mapping in `DataSchema.java` so as `DataWriter.java` file could be specific for your garni station, so you might need to change it.
+I recommend check the incoming data from station and change the mapping in the DataSchema file if needed.
+If you change it, don't forget to update tests.

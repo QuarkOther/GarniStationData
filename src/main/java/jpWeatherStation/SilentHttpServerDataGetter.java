@@ -3,8 +3,6 @@ package jpWeatherStation;
 import com.sun.net.httpserver.*;
 import java.io.*;
 import java.net.*;
-import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
@@ -17,7 +15,6 @@ public class SilentHttpServerDataGetter {
         int port = Integer.parseInt(conf.getPort());
         String ip = conf.getIp();
 
-        assert ip != null;
         HttpServer server = HttpServer.create(new InetSocketAddress(ip,port), 0);
         server.createContext("/", new SilentHandler());
 
