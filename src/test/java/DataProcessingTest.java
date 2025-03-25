@@ -1,7 +1,9 @@
+import jpWeatherStation.ConfigLoader;
 import jpWeatherStation.DataProcessing;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
@@ -18,7 +20,7 @@ public class DataProcessingTest {
         data.put("action", "updateraww");
         data.put("realTime", "1");
         data.put("rateFrequency", "5");
-        data.put("dateTime", LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+        data.put("dateTime", LocalDateTime.now(ZoneId.of(ConfigLoader.getTimeZone())).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
         data.put("barometricPressure", "1009.4818828310192");
         data.put("indoorTempC", "23.055555555555557");
         data.put("outdoorTempC", "8.88888888888889");
