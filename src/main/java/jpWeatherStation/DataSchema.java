@@ -32,9 +32,7 @@ public class DataSchema {
         this.realTime = data.get("realtime");
         this.rateFrequency = String.valueOf(Integer.parseInt(data.get("rtfreq")));
         if ("now".equals(data.get("dateutc"))) {
-            ConfigLoader conf = new ConfigLoader();
-            conf.loadConfig();
-            this.dateTime = LocalDateTime.now(ZoneId.of(conf.getTimeZone())).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+            this.dateTime = LocalDateTime.now(ZoneId.of(ConfigLoader.getTimeZone())).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         } else {
             this.dateTime = String.valueOf(LocalDateTime.parse(data.get("dateutc")));
         }

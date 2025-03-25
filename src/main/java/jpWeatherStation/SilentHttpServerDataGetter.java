@@ -13,6 +13,7 @@ public class SilentHttpServerDataGetter {
     public SilentHttpServerDataGetter() throws IOException {
         ConfigLoader conf = new ConfigLoader();
         conf.loadConfig();
+
         int port = Integer.parseInt(conf.getPort());
         String ip = conf.getIp();
 
@@ -37,7 +38,7 @@ public class SilentHttpServerDataGetter {
 
             String receivedMsg = exchange.getRequestURI().toString();
             DataProcessing dataProcess = new DataProcessing(receivedMsg);
-            Map<String, String> writeToDbData = (Map<String, String>) dataProcess.getProcessedData();
+            Map<String, String> writeToDbData = dataProcess.getProcessedData();
             System.out.println("Data to write to DB\n" + writeToDbData);
 
             new DataWriteDbHandler(writeToDbData);

@@ -9,18 +9,6 @@ public class DatabaseConnection {
     private final String USER;
     private final String PASSWORD;
 
-    DatabaseConnection(String url, String user, String password) {
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            System.out.println("MySQL JDBC Driver not found.");
-            e.printStackTrace();
-        }
-        this.URL = url;
-        this.USER = user;
-        this.PASSWORD = password;
-    }
-
     DatabaseConnection() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");

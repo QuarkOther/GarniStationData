@@ -7,10 +7,6 @@ import java.util.Properties;
 public class ConfigLoader {
     private final String configFile;
 
-    public ConfigLoader(String inputFile){
-        this.configFile = inputFile;
-    }
-
     public ConfigLoader(){
         this.configFile = "conf/config.properties";
     }
@@ -33,7 +29,7 @@ public class ConfigLoader {
         if (properties.getProperty("INPUT_IP") != null) {
             return properties.getProperty("INPUT_IP");
         }
-        else return null;
+        else return "localhost";
     }
 
 
@@ -41,21 +37,21 @@ public class ConfigLoader {
         if (properties.getProperty("INPUT_PORT") != null) {
             return properties.getProperty("INPUT_PORT");
         }
-        else return null;
+        else return "8080";
     }
 
     public static String getDbIP() {
         if (properties.getProperty("DB_IP") != null) {
             return properties.getProperty("DB_IP");
         }
-        else return null;
+        else return "localhost";
     }
 
     public static String getDbPort() {
         if (properties.getProperty("DB_PORT") != null) {
             return properties.getProperty("DB_PORT");
         }
-        else return null;
+        else return "3306";
     }
 
     public static String getDbUser() {

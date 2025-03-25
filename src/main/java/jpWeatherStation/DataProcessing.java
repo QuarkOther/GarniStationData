@@ -10,7 +10,7 @@ public class DataProcessing {
         this.dataSchema = parseAndSetData(rawDataString);
     }
 
-    public Object getProcessedData() {
+    public Map<String, String> getProcessedData() {
         return this.dataSchema.getDataAsMap();
     }
 
