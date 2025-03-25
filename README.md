@@ -4,9 +4,9 @@ Getting data from `Garni 1025 arcus` weather station written in Java 21.
 ## Setup garni station
 I have set an ip address for the garni station and I have set the port to 8080.
 
-SCREENSHOT OF GARNI SETUP
 
-## Run the project
+## Run the project![IMG_4160](https://github.com/user-attachments/assets/6f4fb03c-19c7-4006-805a-9bc1996fc177)
+
 The project is written in Java 21 with IntelliJ IDEA. It uses MySQL as a database and Grafana for visualization.
 All the dependencies are managed by Gradle and the project is built using Docker.
 To run the project, you need to have Java 21 installed on your machine and docker-compose. 
