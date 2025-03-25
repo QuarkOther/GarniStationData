@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: openjdk:21-slim
 
     steps:
       - name: Checkout code
@@ -17,6 +17,7 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: '21'
+
 
       - name: Cache Gradle packages
         uses: actions/cache@v3
