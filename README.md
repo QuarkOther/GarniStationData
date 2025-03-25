@@ -16,7 +16,7 @@ At first, you need to set up a credentials for the MySQL database and IP:PORT of
 Default values are set to localhost and 8080 and for mysql also localhost and 3306, if not set in the file.
 
 ```properties
-INPUT_IP=x.x.x.x // IP of the host PC
+INPUT_IP=10.10.8.23 // IP of the host PC
 INPUT_PORT=8080 // Port setup in the garni station
 TIMEZONE=Europe/Prague //timezone, so you have the correct time in the database and in the grafana
 DB_IP=localhost // IP of the MySQL database (localhost or mysql)
