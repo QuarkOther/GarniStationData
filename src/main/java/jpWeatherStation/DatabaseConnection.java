@@ -17,7 +17,6 @@ public class DatabaseConnection {
             e.printStackTrace();
         }
         ConfigLoader conf = new ConfigLoader();
-        conf.loadConfig();
         this.URL = "jdbc:mysql://" + conf.getDbIP() + ":" + conf.getDbPort() + "/" + conf.getDbDatabase();
         this.USER = conf.getDbUser();
         this.PASSWORD = conf.getDbPassword();

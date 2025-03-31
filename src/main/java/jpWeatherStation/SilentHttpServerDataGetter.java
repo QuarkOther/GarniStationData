@@ -8,19 +8,13 @@ import java.util.Map;
 
 public class SilentHttpServerDataGetter {
 
-    public SilentHttpServerDataGetter() throws IOException {
-        ConfigLoader conf = new ConfigLoader();
-        conf.loadConfig();
-
-        int port = Integer.parseInt(conf.getPort());
-        String ip = conf.getIp();
-
-        HttpServer server = HttpServer.create(new InetSocketAddress(ip,port), 0);
+    public SilentHttpServerDataGetter(ConfigLoader conf) throws IOException {
+        HttpServer server = HttpServer.create(new InetSocketAddress(conf.getIp(), Integer.parseInt(conf.getPort())), 0);
         server.createContext("/", new SilentHandler());
 
         server.setExecutor(null);
         server.start();
-        System.out.println("HTTP Server started on: " + ip + ":" + port);
+        System.out.println("HTTP Server started on: " + conf.getIp() + ":" + Integer.parseInt(conf.getPort()));
     }
 
     static class SilentHandler implements HttpHandler {

@@ -9,6 +9,7 @@ public class ConfigLoader {
 
     public ConfigLoader(){
         this.configFile = "conf/config.properties";
+        loadConfig();
     }
 
     private static final Properties properties = new Properties();
