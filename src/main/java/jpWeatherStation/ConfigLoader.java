@@ -23,7 +23,7 @@ public class ConfigLoader {
     }
 
     public static String getIp() {
-        if (properties.getProperty("INPUT_IP") != null) {
+        if (properties.getProperty("INPUT_IP") != null && properties.getProperty("INPUT_IP").matches("\\b(?:\\d{1,3}\\.){3}\\d{1,3}\\b")) {
             return properties.getProperty("INPUT_IP");
         }
         else return "localhost";
@@ -31,7 +31,7 @@ public class ConfigLoader {
 
 
     public static String getPort() {
-        if (properties.getProperty("INPUT_PORT") != null) {
+        if (properties.getProperty("INPUT_PORT") == null) {
             return properties.getProperty("INPUT_PORT");
         }
         else return "8080";
