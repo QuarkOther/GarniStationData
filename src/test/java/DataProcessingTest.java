@@ -28,7 +28,7 @@ public class DataProcessingTest {
         data.put("outdoorHumidity", "97.0");
         data.put("windSpeed", "0.67056");
         data.put("windDirection", "324");
-        data.put("windGust", "1.5");
+        data.put("windGust", "0.67056");
         data.put("rainRate", "0.0");
         data.put("sunRadiation", "157.21");
         data.put("uvIndex", "1.6");
