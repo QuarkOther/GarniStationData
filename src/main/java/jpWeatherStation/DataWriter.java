@@ -9,7 +9,11 @@ public class DataWriter {
 
     public DataWriter(Map<String, String> data, Connection dbConnection) {
         try {
-            createTableIfNotExists(dbConnection);
+            if (createTableIfNotExists(dbConnection)) {
+                System.out.println("Table already exists or created successfully.");
+            } else {
+                System.out.println("Failed to create table.");
+            }
 
             String query = "INSERT INTO weather_data_vt (weatherStationID, password, action, realTime, rateFrequency, dateTime, barometricPressure, indoorTempC, outdoorTempC, indoorHumidity, outdoorHumidity, windSpeed, windDirection, windGust, rainRate, sunRadiation, uvIndex) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement preparedStatement = dbConnection.prepareStatement(query);
@@ -37,14 +41,16 @@ public class DataWriter {
         }
     }
 
-    private void createTableIfNotExists(Connection connection){
+    private boolean createTableIfNotExists(Connection connection){
         try {
             String query = "CREATE TABLE IF NOT EXISTS weather_data_vt (weatherStationID VARCHAR(255), password VARCHAR(255), action VARCHAR(255), realTime VARCHAR(255), rateFrequency VARCHAR(255), dateTime VARCHAR(255), barometricPressure VARCHAR(255), indoorTempC VARCHAR(255), outdoorTempC VARCHAR(255), indoorHumidity VARCHAR(255), outdoorHumidity VARCHAR(255), windSpeed VARCHAR(255), windDirection VARCHAR(255), windGust VARCHAR(255), rainRate VARCHAR(255), sunRadiation VARCHAR(255), uvIndex VARCHAR(255))";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.executeUpdate();
             System.out.println("Table created successfully.");
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 }
