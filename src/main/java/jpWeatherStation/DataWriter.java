@@ -37,16 +37,14 @@ public class DataWriter {
         }
     }
 
-    private boolean createTableIfNotExists(Connection connection){
+    private void createTableIfNotExists(Connection connection){
         try {
             String query = "CREATE TABLE IF NOT EXISTS weather_data_vt (weatherStationID VARCHAR(255), password VARCHAR(255), action VARCHAR(255), realTime VARCHAR(255), rateFrequency VARCHAR(255), dateTime VARCHAR(255), barometricPressure VARCHAR(255), indoorTempC VARCHAR(255), outdoorTempC VARCHAR(255), indoorHumidity VARCHAR(255), outdoorHumidity VARCHAR(255), windSpeed VARCHAR(255), windDirection VARCHAR(255), windGust VARCHAR(255), rainRate VARCHAR(255), sunRadiation VARCHAR(255), uvIndex VARCHAR(255))";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.executeUpdate();
             System.out.println("Table created successfully.");
-            return true;
         } catch (SQLException e) {
             e.printStackTrace();
-            return false;
         }
     }
 }
