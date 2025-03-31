@@ -44,7 +44,7 @@ public class DataSchemaTest {
         assertEquals("40.0", dataSchema.getDataAsMap().get("indoorHumidity"));
         assertEquals("50.0", dataSchema.getDataAsMap().get("outdoorHumidity"));
         assertEquals("4.4704", dataSchema.getDataAsMap().get("windSpeed"));
-        assertEquals("15.0", dataSchema.getDataAsMap().get("windGust"));
+        assertEquals("6.7056", dataSchema.getDataAsMap().get("windGust"));
         assertEquals("180", dataSchema.getDataAsMap().get("windDirection"));
         assertEquals("0.1", dataSchema.getDataAsMap().get("rainRate"));
         assertEquals("500.0", dataSchema.getDataAsMap().get("sunRadiation"));

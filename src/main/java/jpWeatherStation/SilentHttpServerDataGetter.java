@@ -8,10 +8,7 @@ import java.util.Map;
 
 public class SilentHttpServerDataGetter {
 
-    public SilentHttpServerDataGetter() throws IOException {
-        ConfigLoader conf = new ConfigLoader();
-        conf.loadConfig();
-
+    public SilentHttpServerDataGetter(ConfigLoader conf) throws IOException {
         int port = Integer.parseInt(conf.getPort());
         String ip = conf.getIp();
 

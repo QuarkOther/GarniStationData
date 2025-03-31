@@ -42,7 +42,7 @@ public class DataSchema {
         this.indoorHumidity = String.valueOf(Double.parseDouble(data.get("indoorhumidity")));
         this.outdoorHumidity = String.valueOf(Double.parseDouble(data.get("humidity")));
         this.windSpeed = String.valueOf(Double.parseDouble(data.get("windspeedmph"))* 0.44704);
-        this.windGust = String.valueOf(Double.parseDouble(data.get("windgustmph")));
+        this.windGust = String.valueOf(Double.parseDouble(data.get("windgustmph"))* 0.44704);
         this.windDirection = String.valueOf(Integer.parseInt(data.get("winddir")));
         this.rainRate = String.valueOf(Double.parseDouble(data.get("rainin")));
         this.sunRadiation = String.valueOf(Double.parseDouble(data.get("solarradiation")));
