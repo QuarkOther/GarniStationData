@@ -10,6 +10,8 @@ public class SilentHttpServerDataGetter {
 
     public SilentHttpServerDataGetter() throws IOException {
         ConfigLoader conf = new ConfigLoader();
+        conf.loadConfig();
+
         int port = Integer.parseInt(conf.getPort());
         String ip = conf.getIp();
 
@@ -23,7 +25,7 @@ public class SilentHttpServerDataGetter {
 
     static class SilentHandler implements HttpHandler {
         @Override
-        public void handle(HttpExchange exchange) throws IOException {
+        public void handle(HttpExchange exchange) {
             System.out.println("Received request: " + exchange.getRequestMethod() + " " + exchange.getRequestURI());
 
             Headers headers = exchange.getRequestHeaders();
